@@ -1,0 +1,480 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Workshop Ketahanan Pangan</title>
+
+    <style>
+        /* =================================
+           1. PENGATURAN DASAR WEBSITE
+        ================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #fff8ef;
+            color: #593d43;
+            line-height: 1.7;
+        }
+
+        /* =================================
+           2. BAGIAN HEADER / JUDUL
+        ================================= */
+
+        header {
+            background: linear-gradient(135deg, #e98ca8, #f4b6c7);
+            color: white;
+            text-align: center;
+            padding: 75px 20px;
+        }
+
+        .label {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            padding: 7px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        header h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 17px;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* =================================
+           3. KONTEN UTAMA
+        ================================= */
+
+        main {
+            max-width: 950px;
+            margin: 45px auto;
+            padding: 0 22px;
+        }
+
+        section {
+            background: #ffffff;
+            padding: 30px;
+            margin-bottom: 28px;
+            border-radius: 20px;
+            border: 1px solid #f5dce2;
+            box-shadow: 0 5px 18px rgba(180, 110, 130, 0.08);
+        }
+
+        .section-label {
+            color: #d66d8d;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            color: #b94f73;
+            margin: 8px 0 15px;
+            font-size: 25px;
+        }
+
+        /* =================================
+           4. BAGIAN TIGA TIPS
+        ================================= */
+
+        .tips-container {
+            display: grid;
+
+            /* Membuat tiga kolom otomatis */
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+            margin-top: 22px;
+        }
+
+        .tip-card {
+            background: #fff5f5;
+            border: 1px solid #f6d9df;
+            padding: 22px;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        /* Efek saat kartu diarahkan kursor */
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(200, 100, 130, 0.13);
+        }
+
+        .tip-icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .tip-card h3 {
+            color: #bd5b7c;
+            font-size: 17px;
+            margin-bottom: 10px;
+        }
+
+        .tip-card p {
+            font-size: 14px;
+        }
+
+        /* =================================
+           5. BAGIAN TAHUKAH KAMU
+        ================================= */
+
+        .quiz-section {
+            text-align: center;
+            background: #fff0f2;
+        }
+
+        .quiz-section h2 {
+            font-size: 28px;
+        }
+
+        .quiz-section p {
+            margin-bottom: 10px;
+        }
+
+        /* Desain tombol interaktif */
+        button {
+            background: #d96f91;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #b94f73;
+            transform: scale(1.04);
+        }
+
+        button:focus-visible {
+            outline: 3px solid #8e3656;
+            outline-offset: 4px;
+        }
+
+        /* Kotak hasil tips JavaScript */
+        #hasilTips {
+            display: none;
+            background: #fffaf0;
+            border: 2px dashed #e99bb1;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 25px;
+            color: #704653;
+            font-weight: 600;
+        }
+
+        /* =================================
+           6. BAGIAN FOOTER
+        ================================= */
+
+        footer {
+            background: #b94f73;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        /* =================================
+           7. RESPONSIVE UNTUK HP
+        ================================= */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 55px 20px;
+            }
+
+            header h1 {
+                font-size: 30px;
+            }
+
+            header p {
+                font-size: 15px;
+            }
+
+            main {
+                margin: 25px auto;
+            }
+
+            section {
+                padding: 22px;
+            }
+
+            /* Kartu tips menjadi satu kolom */
+            .tips-container {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =================================
+         HEADER WEBSITE
+    ================================== -->
+
+    <header>
+
+        <div class="label">
+            WORKSHOP EDUKASI • SISWA KELAS 12
+        </div>
+
+        <h1>🌸 Ketahanan Pangan untuk Masa Depan</h1>
+
+        <p>
+            Belajar peduli terhadap pangan, mulai dari diri sendiri
+            untuk menciptakan masa depan yang lebih sehat dan berkelanjutan.
+        </p>
+
+    </header>
+
+
+    <!-- =================================
+         KONTEN UTAMA WEBSITE
+    ================================== -->
+
+    <main>
+
+        <!-- PENJELASAN KETAHANAN PANGAN -->
+
+        <section>
+
+            <div class="section-label">
+                Kenali Lebih Dekat
+            </div>
+
+            <h2>🌾 Apa Itu Ketahanan Pangan?</h2>
+
+            <p>
+                Ketahanan pangan adalah kondisi ketika setiap orang
+                memiliki akses terhadap makanan yang cukup, aman,
+                bergizi, dan terjangkau untuk memenuhi kebutuhan
+                hidupnya.
+            </p>
+
+            <p>
+                Sebagai generasi muda, kita memiliki peran penting
+                dalam menjaga ketahanan pangan. Melalui kebiasaan
+                sederhana, kita dapat membantu mengurangi pemborosan
+                makanan, mendukung petani lokal, dan menjaga
+                kelestarian lingkungan.
+            </p>
+
+        </section>
+
+
+        <!-- TIGA TIPS MENJAGA KETAHANAN PANGAN -->
+
+        <section>
+
+            <div class="section-label">
+                Aksi Nyata Generasi Muda
+            </div>
+
+            <h2>🥑 3 Tips Menjaga Ketahanan Pangan</h2>
+
+            <div class="tips-container">
+
+                <!-- Tips pertama -->
+                <div class="tip-card">
+
+                    <div class="tip-icon">🌱</div>
+
+                    <h3>1. Menanam Tanaman Pangan</h3>
+
+                    <p>
+                        Manfaatkan lahan kosong di rumah atau sekolah
+                        untuk menanam sayuran seperti cabai, tomat,
+                        dan kangkung.
+                    </p>
+
+                </div>
+
+
+                <!-- Tips kedua -->
+                <div class="tip-card">
+
+                    <div class="tip-icon">🍚</div>
+
+                    <h3>2. Mengurangi Sampah Makanan</h3>
+
+                    <p>
+                        Ambil makanan secukupnya, habiskan makanan
+                        yang sudah diambil, dan simpan bahan pangan
+                        dengan benar.
+                    </p>
+
+                </div>
+
+
+                <!-- Tips ketiga -->
+                <div class="tip-card">
+
+                    <div class="tip-icon">🧺</div>
+
+                    <h3>3. Mendukung Produk Lokal</h3>
+
+                    <p>
+                        Pilih produk pertanian dari petani lokal
+                        untuk membantu perekonomian masyarakat
+                        dan menjaga ketersediaan pangan.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOMBOL INTERAKTIF TAHUKAH KAMU -->
+
+        <section class="quiz-section">
+
+            <div class="section-label">
+                Fakta Menarik
+            </div>
+
+            <h2>💡 Tahukah Kamu?</h2>
+
+            <p>
+                Seberapa banyak kamu tahu tentang ketahanan pangan?
+                Klik tombol di bawah untuk menemukan fakta dan
+                tips menarik lainnya!
+            </p>
+
+            <!-- Tombol untuk menjalankan JavaScript -->
+            <button onclick="tampilkanTips()">
+                ✨ Tahukah kamu?
+            </button>
+
+            <!-- Tempat menampilkan hasil tips -->
+            <div id="hasilTips" aria-live="polite"></div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =================================
+         FOOTER WEBSITE
+    ================================== -->
+
+    <footer>
+
+        <p>
+            🌸 Workshop Edukasi Ketahanan Pangan
+        </p>
+
+        <p>
+            Generasi Peduli Pangan, Masa Depan Gemilang.
+        </p>
+
+        <p>
+            © 2026 | Edukasi untuk Siswa Kelas 12
+        </p>
+
+    </footer>
+
+
+    <!-- =================================
+         JAVASCRIPT: TOMBOL INTERAKTIF
+    ================================== -->
+
+    <script>
+
+        // Kumpulan fakta dan tips tambahan
+        const daftarTips = [
+
+            "🌱 Menanam sayuran sendiri dapat membantu keluarga memenuhi sebagian kebutuhan pangan sehari-hari.",
+
+            "🍚 Menghabiskan makanan merupakan tindakan sederhana untuk mengurangi pemborosan pangan.",
+
+            "🌾 Membeli hasil pertanian lokal dapat membantu meningkatkan pendapatan petani.",
+
+            "💧 Penggunaan air yang bijak sangat penting untuk mendukung pertanian berkelanjutan.",
+
+            "🥬 Penyimpanan bahan makanan yang tepat dapat membantu menjaga kualitas dan kesegarannya.",
+
+            "🌍 Ketahanan pangan bukan hanya tanggung jawab pemerintah, tetapi juga seluruh masyarakat.",
+
+            "🌻 Pekarangan sekolah dapat dimanfaatkan sebagai tempat belajar menanam tanaman pangan."
+
+        ];
+
+
+        // Menyimpan posisi tips yang akan ditampilkan
+        let indeks = 0;
+
+
+        // Fungsi yang dijalankan ketika tombol diklik
+        function tampilkanTips() {
+
+            // Mengambil elemen HTML dengan ID hasilTips
+            const kotakTips = document.getElementById("hasilTips");
+
+
+            // Mengambil tips berdasarkan nomor indeks
+            kotakTips.textContent = daftarTips[indeks];
+
+
+            // Menampilkan kotak tips ke halaman
+            kotakTips.style.display = "block";
+
+
+            // Berpindah ke tips berikutnya
+            indeks++;
+
+
+            // Jika sudah mencapai tips terakhir,
+            // kembali lagi ke tips pertama
+            if (indeks >= daftarTips.length) {
+
+                indeks = 0;
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
